@@ -1,0 +1,10 @@
+FROM node:latest
+
+RUN apt-get update && \
+    apt-get install -y android-tools-adb && \
+    npm install -g expo-cli
+
+WORKDIR /app
+ADD . /app
+
+ENTRYPOINT ["bin/docker_entrypoint.sh"]

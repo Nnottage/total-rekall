@@ -1,0 +1,16 @@
+version: "3.5"
+
+services:
+    app:
+        container_name: total-rekall-app
+        build: 
+            context: .
+            dockerfile: Dockerfile.dev
+        environment:
+            REACT_NATIVE_PACKAGER_HOSTNAME: "${REACT_NATIVE_PACKAGER_HOSTNAME}" # Is automatically replaced by the docker container host IP address.
+        ports:
+            - "19000:19000"
+            - "19001:19001"
+            - "19002:19002"
+        volumes:
+            - .:/app
