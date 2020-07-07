@@ -9,4 +9,5 @@ fi
 echo "=== Docker Compose installed. Proceeding... ==="
 echo "=== Building containers ==="
 docker-compose build app
+docker-compose rum --rm app # Will download dependencies
 echo "Setup Finished! Run \"docker-compose up\" up to get started"
