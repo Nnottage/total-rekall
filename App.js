@@ -1,19 +1,25 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createSwitchNavigator, createAppContainer } from 'react-navigation'
+import LoadingScreen from './screens/LoadingScreen'
+import SignupScreen from './screens/SignupScreen'
+import DashboardScreen from './screens/DashboardScreen'
+
+import firebase from 'firebase'
+import { firebaseConfig } from './config';
+firebase.initializeApp(firebaseConfig)
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Total Rekall - The app to memorize</Text>
-    </View>
+    <AppNavigator />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const AppSwitchNavigator = createSwitchNavigator(
+  { 
+    LoadingScreen: LoadingScreen,
+    SignupScreen: SignupScreen,
+    DashboardScreen: DashboardScreen
+  }
+)
+
+const AppNavigator = createAppContainer(AppSwitchNavigator)
